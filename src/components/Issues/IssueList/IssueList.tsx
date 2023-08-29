@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import IssueListItem from '../IssueListItem/IssueListItem';
 import { getIssueList } from '../../../apis/issues';
@@ -25,7 +26,9 @@ const IssueList = () => {
         return (
           <>
             <li key={issue.id}>
-              <IssueListItem issue={issue} />
+              <Link to={`/${issue.number}`}>
+                <IssueListItem issue={issue} />
+              </Link>
             </li>
             {isMultipleOfFive && <img src={wantedLogo} alt='광고: 원티드' />}
           </>
