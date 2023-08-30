@@ -2,7 +2,8 @@ import { instance } from '../libs/axios';
 import { IssueType } from '../types/type';
 
 interface GetIssueListParams {
-  sort: 'created' | 'updated' | 'comments';
+  sort?: 'created' | 'updated' | 'comments';
+  page?: number;
 }
 
 export const getIssueList = async (
