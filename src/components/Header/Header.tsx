@@ -1,8 +1,10 @@
+import * as S from './Header.styled';
+
 const Header = () => {
   return (
-    <div>
+    <S.Header>
       <h1>facebook / react</h1>
-    </div>
+    </S.Header>
   );
 };
 

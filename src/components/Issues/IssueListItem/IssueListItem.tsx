@@ -1,22 +1,26 @@
 import { IssueType } from '../../../types/type';
 
+import * as S from './IssueListItem.styled';
+
 interface IssueListItemProps {
   issue: IssueType;
 }
 
 const IssueListItem = ({ issue }: IssueListItemProps) => {
   return (
-    <div>
+    <S.IssueItemWrapper>
       <div>
-        <span>{`#${issue.number}`}</span>
-        <strong>{issue.title}</strong>
-      </div>
-      <div>
-        <span>{`작성자: ${issue.user.login}`}</span>
-        <span>{`작성일: ${issue.created_at}`}</span>
+        <S.TitleWrapper>
+          <span>{`#${issue.number}`}</span>
+          <S.Title>{issue.title}</S.Title>
+        </S.TitleWrapper>
+        <S.UserWrapper>
+          <span>{`작성자: ${issue.user.login}`}</span>
+          <span>{`, 작성일: ${issue.created_at}`}</span>
+        </S.UserWrapper>
       </div>
       <div>{`코멘트: ${issue.comments}`}</div>
-    </div>
+    </S.IssueItemWrapper>
   );
 };
 

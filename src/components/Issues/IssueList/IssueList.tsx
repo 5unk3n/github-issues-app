@@ -7,6 +7,7 @@ import { IssueType } from '../../../types/type';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 
 import wantedLogo from '../../../assets/images/wanted-logo.webp';
+import * as S from './IssueList.styled';
 
 const IssueList = () => {
   const [issues, setIssues] = useState<IssueType[]>([]);
@@ -43,7 +44,7 @@ const IssueList = () => {
   }
 
   return (
-    <ul>
+    <S.IssueList>
       {issues.map((issue, index) => {
         const isMultipleOfFive = index % 5 === 4;
         const isLastIssue = index === issues.length - 1;
@@ -61,7 +62,7 @@ const IssueList = () => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <img src={wantedLogo} alt='광고: 원티드' />
+                  <S.AdImage src={wantedLogo} alt='광고: 원티드' />
                 </a>
               </li>
             )}
@@ -69,7 +70,7 @@ const IssueList = () => {
         );
       })}
       {isLoading && <div>Loading...</div>}
-    </ul>
+    </S.IssueList>
   );
 };
 

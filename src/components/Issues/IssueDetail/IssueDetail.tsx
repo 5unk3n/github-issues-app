@@ -8,6 +8,8 @@ import { IssueType } from '../../../types/type';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 
+import * as S from './IssueDetail.styled';
+
 const IssueDetail = () => {
   const { issueNumber } = useParams();
   const [issue, setIssue] = useState<IssueType | null>(null);
@@ -40,18 +42,18 @@ const IssueDetail = () => {
 
   return (
     <div>
-      <div>
+      <S.UserWrapper>
         <img
           src={issue.user.avatar_url}
           alt={`${issue.user.login} 프로필 이미지`}
         />
         <IssueListItem issue={issue} />
-      </div>
-      <div>
+      </S.UserWrapper>
+      <S.ContentWrapper>
         <ReactMarkdown rehypePlugins={[rehypeRaw as any, remarkGfm]}>
           {issue.body}
         </ReactMarkdown>
-      </div>
+      </S.ContentWrapper>
     </div>
   );
 };
