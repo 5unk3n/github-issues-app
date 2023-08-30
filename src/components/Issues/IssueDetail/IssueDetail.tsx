@@ -5,6 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import IssueListItem from '../IssueListItem/IssueListItem';
 import { getIssueDetail } from '../../../apis/issues';
 import { IssueType } from '../../../types/type';
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 const IssueDetail = () => {
   const { issueNumber } = useParams();
@@ -36,7 +38,9 @@ const IssueDetail = () => {
         <IssueListItem issue={issue} />
       </div>
       <div>
-        <ReactMarkdown>{issue.body}</ReactMarkdown>
+        <ReactMarkdown rehypePlugins={[rehypeRaw as any, remarkGfm]}>
+          {issue.body}
+        </ReactMarkdown>
       </div>
     </div>
   );
