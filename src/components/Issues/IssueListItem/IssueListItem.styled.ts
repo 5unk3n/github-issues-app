@@ -24,3 +24,7 @@ export const Title = styled.h2`
 export const UserWrapper = styled.div`
   margin-top: 8px;
 `;
+
+export const Comment = styled.span`
+  flex-shrink: 0;
+`;
