@@ -11,15 +11,25 @@ import wantedLogo from '../../../assets/images/wanted-logo.webp';
 const IssueList = () => {
   const [issues, setIssues] = useState<IssueType[]>([]);
   const [issuesPage, setIssuesPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const lastElementRef = useRef(null);
 
   const fetchIssueList = async () => {
+    if (isLoading) return;
+    setIsLoading(true);
+    try {
       const fetchedIssueList = await getIssueList({
         sort: 'comments',
         page: issuesPage,
       });
       setIssues((prevIssueList) => [...prevIssueList, ...fetchedIssueList]);
       setIssuesPage(issuesPage + 1);
+    } catch (error) {
+      setIsError(true);
+      console.error(error);
+    }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -28,10 +38,15 @@ const IssueList = () => {
 
   useInfiniteScroll(lastElementRef, fetchIssueList);
 
+  if (isError) {
+    return <div>Error</div>;
+  }
+
   return (
     <ul>
-      {Issues.map((issue, index) => {
+      {issues.map((issue, index) => {
         const isMultipleOfFive = index % 5 === 4;
+        const isLastIssue = index === issues.length - 1;
         return (
           <>
             <li key={issue.id} ref={isLastIssue ? lastElementRef : null}>
@@ -47,6 +62,7 @@ const IssueList = () => {
           </>
         );
       })}
+      {isLoading && <div>Loading...</div>}
     </ul>
   );
 };

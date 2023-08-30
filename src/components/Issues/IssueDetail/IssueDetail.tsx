@@ -10,12 +10,18 @@ import remarkGfm from 'remark-gfm';
 
 const IssueDetail = () => {
   const { issueNumber } = useParams();
-  const [issue, setIssue] = useState<IssueType>();
+  const [issue, setIssue] = useState<IssueType | null>(null);
+  const [isError, setIsError] = useState(false);
 
   const fetchIssueDetail = async () => {
-    if (issueNumber) {
-      const data = await getIssueDetail(issueNumber);
-      setIssue(data);
+    try {
+      if (issueNumber) {
+        const data = await getIssueDetail(issueNumber);
+        setIssue(data);
+      }
+    } catch (error) {
+      setIsError(true);
+      console.error(error);
     }
     return null;
   };
@@ -24,8 +30,12 @@ const IssueDetail = () => {
     fetchIssueDetail();
   }, []);
 
-  if (issue === undefined) {
+  if (issue === null) {
     return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    <div>Error</div>;
   }
 
   return (
