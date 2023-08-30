@@ -56,7 +56,13 @@ const IssueList = () => {
             </li>
             {isMultipleOfFive && (
               <li>
-                <img src={wantedLogo} alt='광고: 원티드' />
+                <a
+                  href='https://www.wanted.co.kr/'
+                  target='_blank'
+                  rel='noreferrer'
+                >
+                  <img src={wantedLogo} alt='광고: 원티드' />
+                </a>
               </li>
             )}
           </>
