@@ -11,7 +11,7 @@ const IssueList = () => {
   const [Issues, setIssues] = useState<IssueType[]>([]);
 
   const fetchIssueList = async () => {
-    const result = await getIssueList();
+    const result = await getIssueList({ sort: 'comments' });
     setIssues(result);
   };
 

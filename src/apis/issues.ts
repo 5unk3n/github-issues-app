@@ -1,8 +1,16 @@
 import { instance } from '../libs/axios';
 import { IssueType } from '../types/type';
 
-export const getIssueList = async (): Promise<IssueType[]> => {
-  const { data } = await instance.get('/repos/facebook/react/issues');
+interface GetIssueListParams {
+  sort: 'created' | 'updated' | 'comments';
+}
+
+export const getIssueList = async (
+  params: GetIssueListParams
+): Promise<IssueType[]> => {
+  const { data } = await instance.get('/repos/facebook/react/issues', {
+    params,
+  });
   return data;
 };
 

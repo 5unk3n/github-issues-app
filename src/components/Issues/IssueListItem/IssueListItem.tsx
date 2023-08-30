@@ -15,7 +15,7 @@ const IssueListItem = ({ issue }: IssueListItemProps) => {
         <span>{`작성자: ${issue.user.login}`}</span>
         <span>{`작성일: ${issue.created_at}`}</span>
       </div>
-      <div>{`${issue.comments}`}</div>
+      <div>{`코멘트: ${issue.comments}`}</div>
     </div>
   );
 };
