@@ -7,7 +7,6 @@ import { getIssueList } from '../../../apis/issues';
 import { IssueType } from '../../../types/type';
 import useInfiniteScroll from '../../../hooks/useInfiniteScroll';
 
-import wantedLogo from '../../../assets/images/wanted-logo.webp';
 import * as S from './IssueList.styled';
 
 const IssueList = () => {
@@ -63,7 +62,10 @@ const IssueList = () => {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  <S.AdImage src={wantedLogo} alt='광고: 원티드' />
+                  <S.AdImage
+                    src='https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fuserweb%2Flogo_wanted_black.png&w=110&q=100'
+                    alt='광고: 원티드'
+                  />
                 </a>
               </li>
             )}
