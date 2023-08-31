@@ -11,4 +11,5 @@ export interface IssueType {
   user: User;
   comments: number;
   body: string;
+  pull_request: string;
 }

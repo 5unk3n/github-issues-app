@@ -24,7 +24,13 @@ const IssueList = () => {
         sort: 'comments',
         page: issuesPage,
       });
-      setIssues((prevIssueList) => [...prevIssueList, ...fetchedIssueList]);
+      setIssues((prevIssueList) => {
+        const IssuesWithoutPullRequest = fetchedIssueList.filter(
+          (issue) => issue.pull_request === undefined
+        );
+
+        return [...prevIssueList, ...IssuesWithoutPullRequest];
+      });
       setIssuesPage(issuesPage + 1);
     } catch (error) {
       setIsError(true);
