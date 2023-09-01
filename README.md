@@ -4,7 +4,11 @@
 
 GitHub의 특정 레포지토리의 이슈 목록과 상세 내용을 확인하는 웹 페이지 입니다.
 
-배포 링크: https://main.d2f1nti56h3zgo.amplifyapp.com
+배포 링크: https://main.d2f1nti56h3zgo.amplifyapp.com/
+
+### 데모 영상
+
+![이슈 데모 수정](https://github.com/5unk3n/github-issues-app/assets/97281800/9e5c2bc6-cda2-48d7-82a8-dd1e628db12b)
 
 ## 개발 기간
 
