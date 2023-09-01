@@ -1,4 +1,3 @@
-// FIXME: 같은 페이지 중복 호출 문제 고쳐야함
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -52,7 +51,7 @@ const IssueList = () => {
   return (
     <S.IssueList>
       {issues.map((issue, index) => {
-        const isMultipleOfFive = index % 5 === 4;
+        const isEveryFifthCell = (index + 1) % 4 === 0;
         const isLastIssue = index === issues.length - 1;
         return (
           <>
@@ -61,7 +60,7 @@ const IssueList = () => {
                 <IssueListItem issue={issue} />
               </Link>
             </li>
-            {isMultipleOfFive && (
+            {isEveryFifthCell && (
               <li>
                 <a
                   href='https://www.wanted.co.kr/'
